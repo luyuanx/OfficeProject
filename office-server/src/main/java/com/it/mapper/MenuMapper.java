@@ -1,7 +1,7 @@
 package com.it.mapper;
 
-import com.it.pojo.Menu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.it.pojo.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -29,4 +29,14 @@ public interface MenuMapper extends BaseMapper<Menu> {
      * @return
      */
     List<Menu> getAllMenusWithRole();
+
+    /**
+     * 获取所有菜单
+     *
+     * @return
+     */
+    List<Menu> getAllMenus();
+
+
+
 }

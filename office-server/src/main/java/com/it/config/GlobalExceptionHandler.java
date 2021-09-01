@@ -13,6 +13,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(SQLException.class)
     public RespBean mySQLException(SQLException e) {
         if (e instanceof SQLIntegrityConstraintViolationException) {
+            e.printStackTrace();
             return RespBean.error("该数据有关数据，操作失败！");
         }
         return RespBean.error("数据库异常，操作失败！");
