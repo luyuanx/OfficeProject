@@ -1,8 +1,10 @@
 package com.it.mapper;
 
-import com.it.pojo.Department;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.it.pojo.Department;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,5 +16,26 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface DepartmentMapper extends BaseMapper<Department> {
+    /**
+     * 获取所有部门
+     *
+     * @param parentId
+     * @return
+     */
+    List<Department> getAllDepartmentsByParentId(Integer parentId);
+
+    /**
+     * 添加部门
+     *
+     * @param dep
+     */
+    void addDep(Department dep);
+
+    /**
+     * 删除部门
+     *
+     * @param dep
+     */
+    void deleteDep(Department dep);
 
 }
