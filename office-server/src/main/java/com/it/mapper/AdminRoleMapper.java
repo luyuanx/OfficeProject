@@ -3,6 +3,7 @@ package com.it.mapper;
 import com.it.pojo.AdminRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -14,5 +15,14 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AdminRoleMapper extends BaseMapper<AdminRole> {
+
+
+    /**
+     * 添加管理员角色
+     * @param adminId
+     * @param rids
+     * @return
+     */
+    Integer addRole(@Param("adminId") Integer adminId, @Param("rids") Integer[] rids);
 
 }

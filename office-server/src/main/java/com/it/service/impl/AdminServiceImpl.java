@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.it.config.security.JwtTokenUtil;
 import com.it.mapper.AdminMapper;
+import com.it.mapper.AdminRoleMapper;
 import com.it.mapper.RoleMapper;
 import com.it.pojo.Admin;
+import com.it.pojo.AdminRole;
 import com.it.pojo.RespBean;
 import com.it.pojo.Role;
 import com.it.service.IAdminService;
@@ -51,6 +53,9 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
     @Autowired
     private RoleMapper roleMapper;
+
+    @Autowired
+    private AdminRoleMapper adminRoleMapper;
     @Override
     public RespBean login(String username, String password, HttpServletRequest request) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -81,5 +86,21 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public List<Role> getRoles(Integer adminId) {
         return roleMapper.getRoles(adminId);
+    }
+
+    @Override
+    public List<Admin> getAllAdmins(String keywords) {
+        Integer adminId = ((Admin) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+        return adminMapper.getAllAdmins(adminId,keywords);
+    }
+
+    @Override
+    public RespBean updateAdminRole(Integer adminId, Integer[] rids) {
+        adminRoleMapper.delete(new QueryWrapper<AdminRole>().eq("adminId",adminId));
+        Integer result = adminRoleMapper.addRole(adminId,rids);
+        if (rids.length==result){
+            return RespBean.success("更新成功!");
+        }
+        return RespBean.error("更新失败!");
     }
 }
