@@ -6,6 +6,7 @@
     <modules>
         <module>office-server</module>
         <module>office-generator</module>
+        <module>office-email</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

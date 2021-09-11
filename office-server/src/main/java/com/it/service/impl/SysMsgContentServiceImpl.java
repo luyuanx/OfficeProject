@@ -1,7 +1,7 @@
 package com.it.service.impl;
 
-import com.it.pojo.SysMsgContent;
 import com.it.mapper.SysMsgContentMapper;
+import com.it.pojo.SysMsgContent;
 import com.it.service.ISysMsgContentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

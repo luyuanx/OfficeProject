@@ -1,7 +1,7 @@
 package com.it.service.impl;
 
-import com.it.pojo.EmployeeTrain;
 import com.it.mapper.EmployeeTrainMapper;
+import com.it.pojo.EmployeeTrain;
 import com.it.service.IEmployeeTrainService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

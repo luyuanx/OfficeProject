@@ -1,7 +1,7 @@
 package com.it.service.impl;
 
-import com.it.pojo.Joblevel;
 import com.it.mapper.JoblevelMapper;
+import com.it.pojo.Joblevel;
 import com.it.service.IJoblevelService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

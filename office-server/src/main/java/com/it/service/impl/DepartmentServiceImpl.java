@@ -1,7 +1,7 @@
 package com.it.service.impl;
 
-import com.it.pojo.Department;
 import com.it.mapper.DepartmentMapper;
+import com.it.pojo.Department;
 import com.it.pojo.RespBean;
 import com.it.service.IDepartmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
