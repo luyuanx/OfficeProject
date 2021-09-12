@@ -156,4 +156,53 @@
         ORDER BY e.id
     </select>
 
+    <resultMap id="EmployeeWithSalary" type="com.it.pojo.Employee"
+               extends="BaseResultMap">
+        <association property="salary" javaType="com.it.pojo.Salary">
+            <id column="sid" property="id"/>
+            <result column="sbasicSalary" property="basicSalary"/>
+            <result column="sbonus" property="bonus"/>
+            <result column="slunchSalary" property="lunchSalary"/>
+            <result column="strafficSalary" property="trafficSalary"/>
+            <result column="sallSalary" property="allSalary"/>
+            <result column="spensionBase" property="pensionBase"/>
+            <result column="spensionPer" property="pensionPer"/>
+            <result column="smedicalBase" property="medicalBase"/>
+            <result column="smedicalPer" property="medicalPer"/>
+            <result column="saccumulationFundBase" property="accumulationFundBase"/>
+            <result column="saccumulationFundPer" property="accumulationFundPer"/>
+            <result column="sname" property="name"/>
+        </association>
+        <association property="department"
+                     javaType="com.it.pojo.Department">
+            <result column="dname" property="name"/>
+        </association>
+    </resultMap>
+
+    <!--获取所有员工账套-->
+    <select id="getEmployeeWithSalary" resultMap="EmployeeWithSalary">
+    SELECT
+    e.*,
+    d.`name` AS dname,
+    s.id AS sid,
+    s.`name` AS sname,
+    s.basicSalary AS sbasicSalary,
+    s.trafficSalary AS strafficSalary,
+    s.lunchSalary AS slunchSalary,
+    s.bonus AS sbonus,
+    s.allSalary AS sallSalary,
+    s.pensionPer AS spensionPer,
+    s.pensionBase AS spensionBase,
+    s.medicalPer AS smedicalPer,
+    s.medicalBase AS smedicalBase,
+    s.accumulationFundPer AS saccumulationFundPer,
+    s.accumulationFundBase AS saccumulationFundBase
+    FROM
+        t_employee AS e
+            LEFT JOIN t_salary AS s ON e.salaryId = s.id
+            LEFT JOIN t_department AS d ON e.departmentId = d.id
+    ORDER BY
+        e.id
+    </select>
+
 </mapper>
